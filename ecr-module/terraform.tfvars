@@ -10,12 +10,7 @@ tags = {
   "cloud_provider" = "aws"
 }
 
-backend = {
-  bucket         = "s6-db-backup"
-  #dynamodb_table = ""
-  key            = "terraform/ecr"
-  region         = "us-east-1"
-}
+
 
 scan_config = {
   "scan_type"      = "BASIC"

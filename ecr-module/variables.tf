@@ -17,21 +17,9 @@ variable "tags" {
   }
 }
 
-variable "backend" {
-  type = map(string)
-  default = {
-    bucket         = ""
-    dynamodb_table = ""
-    key            = ""
-    region         = ""
-  }
-}
-
 variable "ecr_repo_name" {
   type = list(string)
 }
-
-
 variable "scan_on_push" {
   type    = bool
   default = true
@@ -50,7 +38,7 @@ variable "scan_config" {
     "filter"         = "*"
   }
 }
- 
+
 
 
 
