@@ -15,6 +15,7 @@ tags = {
   "base-image"     = "ubuntu"
   "base-image-tag" = "20.04"
   "branch"         = "Phase-7"
+
   "environment"    = "dev"
   "project"        = "Revive"
   "create_by"      = "Terraform"
