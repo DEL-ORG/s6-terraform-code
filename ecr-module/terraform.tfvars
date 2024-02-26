@@ -27,6 +27,12 @@ ecr_repo_name = [
   "carts",
   "catalog",
   "orders",
-  "checkout"
+  "checkout",
+  "asset",
+  "carts-db",
+  "orders-db",
+  "checkout-db",
+  "catalog-db",
+  "asset-db"
 ]
 

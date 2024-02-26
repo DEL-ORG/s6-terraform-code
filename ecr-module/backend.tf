@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-angel"
-    #dynamodb_table = var.backend["dynamodb_table"]
-    key    = "DevOps/ecr"
-    region = "us-east-1"
+    bucket = "s6-revive-terraform"
+    #dynamodb_table = ""
+    key     = "ecr"
+    region  = "us-east-1"
+    profile = "student"
   }
 }
