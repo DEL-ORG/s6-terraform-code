@@ -3,8 +3,8 @@ terraform {
     bucket = "s6-db-backup"
     key    = "terraform/backend"
     region = "us-east-1"
-    versioning {
-      enabled = true
-    }
+    # versioning {
+    #   enabled = true
+    # }
   }
 }
