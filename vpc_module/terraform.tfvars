@@ -4,13 +4,19 @@ cidr_block = "10.0.0.0/16"
 
 tags = {
   "id"             = "1300"
-  "owner"          = "Practical DevOps"
+  "owner"          = "phase5"
   "teams"          = "PD"
   "environment"    = "dev"
-  "project"        = "S3 Backend"
+  "project"        = "revive-vpc"
   "create_by"      = "Terraform"
   "cloud_provider" = "aws"
 }
 
 num_nat = 1
+
+availability_zone = [
+  "us-east-1a",
+  "us-east-1b",
+  "us-east-1c",
+]
 

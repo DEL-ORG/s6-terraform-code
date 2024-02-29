@@ -6,17 +6,17 @@ variable "aws_region" {
 
 
 variable "num_nat" {
-  type = number
+  type    = number
   default = 1
 }
 variable "tags" {
   type = map(any)
   default = {
     "id"             = "1300"
-    "owner"          = "Practical DevOps"
+    "owner"          = "Phase5"
     "teams"          = "PD"
     "environment"    = "dev"
-    "project"        = "S3 Backend"
+    "project"        = "revive-vpc"
     "create_by"      = "Terraform"
     "cloud_provider" = "aws"
   }
@@ -27,7 +27,7 @@ variable "cidr_block" {
   default = ""
 }
 
-variable "AZ" {
+variable "availability_zone" {
   type = list(any)
   default = [
     "us-east-1a",
