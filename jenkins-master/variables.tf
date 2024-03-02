@@ -3,9 +3,14 @@ variable "region" {
   default = "us-east-1"
 }
 
+variable "eip_asso" {
+  type = string
+}
+
 variable "tags" {
   type = map(string)
   default = {
+    "id"            = "1300"
     "Teams"         = "phase5"
     "environment"   = "dev"
     "project"       = "revive"
@@ -19,10 +24,6 @@ variable "instance_ami" {
   type = string
 }
 
-variable "key_name" {
-  type = string
-}
-
 variable "instance_type" {
   type = string
 }
@@ -33,7 +34,7 @@ variable "volume_size" {
 
 
 variable "tenancy" {
-  type = bool
+  type = string
 }
 
 variable "api_termination" {
@@ -48,12 +49,12 @@ variable "subnet_id" {
   type = list(string)
 }
 
-variable "jenkins-role-name" {
-  type    = string
-  default = "jenkins-master-role"
-}
 
 variable "vpc_id" {
+  type = string
+}
+
+variable "sg" {
   type = string
 }
 
