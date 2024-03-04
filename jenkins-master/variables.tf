@@ -3,10 +3,6 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "eip_asso" {
-  type = string
-}
-
 variable "tags" {
   type = map(string)
   default = {
@@ -32,11 +28,6 @@ variable "volume_size" {
   type = string
 }
 
-
-variable "tenancy" {
-  type = string
-}
-
 variable "api_termination" {
   type = bool
 }
@@ -45,16 +36,40 @@ variable "pub_ip" {
   type = bool
 }
 
-variable "subnet_id" {
-  type = list(string)
+variable "internal" {
+  type    = bool
+  default = false
 }
 
+variable "lb_type" {
+  type    = string
+  default = "application"
+}
 
-variable "vpc_id" {
-  type = string
+variable "lb_protection" {
+  type    = bool
+  default = true
+}
+
+variable "max_size" {
+  type    = number
+  default = 2
+}
+variable "min_size" {
+  type    = number
+  default = 1
+}
+variable "desired_capacity" {
+  type    = number
+  default = 1
 }
 
 variable "sg" {
   type = string
 }
-
+ variable "allocation_id " {
+  type = string
+}
+variable "subnet_id" {
+  type = list(string)
+}

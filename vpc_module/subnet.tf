@@ -3,10 +3,10 @@ resource "aws_subnet" "revive_subnet_pub" {
   vpc_id            = aws_vpc.revive_vpc.id
   cidr_block        = cidrsubnet(var.cidr_block, 8, count.index + length(var.availability_zone))
   availability_zone = element(var.availability_zone, count.index)
-  //cidrsubnet(prefix, newbits, netnum)
 
   tags = merge(var.tags, {
     Name = format("revive-%s-pub_subnet-${count.index + 1}", var.tags["id"])
+    tier = "public"
     }
   )
 }
@@ -18,6 +18,7 @@ resource "aws_subnet" "revive_subnet_private" {
 
   tags = merge(var.tags, {
     Name = format("revive-%s-pri_subnet-${count.index + 1}", var.tags["id"])
+    tier = "private"
     }
   )
 }
