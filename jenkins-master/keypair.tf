@@ -9,21 +9,26 @@ data "aws_key_pair" "jen_key" {
 }
 
 //resource "terraform_data" "jenkins_pass" {
-//  # Replacement of any instance of the cluster requires re-provisioning
 //  triggers_replace = aws_instance.revive_jenkins.id
-//
-//
-//  # Bootstrap script can run on any instance of the cluster
-//  # So we just choose the first in this case
 //  connection {
-//    host = aws_instance.revive_jenkins.public_ip
+//    user = "ubuntu"
+//    key = data.aws_key_pair.jen_key
+//    host = data.aws_instance.jenkins.public_ip
 //  }
-//
 //  provisioner "remote-exec" {
-//    # Bootstrap script called with private_ip of each node in the cluster
-//    inline = [
-//      "sudo cat /var/lib/jenkins",
-//    ]
+//    command = "sudo /var/lib/jenkins/secrets/initialAdminPassword",
+//    
+//  }
+//}
+
+//data "aws_instance" "jenkins" {
+//  filter {
+//    name   = "image-id"
+//    values = [data.aws_ami.jenkins_ami.id]
+//  }
+//  filter {
+//    name   = "tag:Name"
+//    values = ["1300-revive-jenkins"]
 //  }
 //}
 
