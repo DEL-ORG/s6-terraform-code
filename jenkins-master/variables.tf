@@ -16,10 +16,6 @@ variable "tags" {
   }
 }
 
-//variable "instance_ami" {
-//  type = string
-//}
-
 variable "instance_type" {
   type = string
 }
@@ -64,12 +60,3 @@ variable "desired_capacity" {
   default = 1
 }
 
-//variable "sg" {
-//  type = string
-//}
-//variable "allocation_id" {
-//  type = string
-//}
-//variable "subnet_id" {
-//  type = list(string)
-//}

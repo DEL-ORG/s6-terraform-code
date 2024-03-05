@@ -4,8 +4,8 @@ resource "aws_lb" "jenkins_lb" {
   load_balancer_type = var.lb_type
   security_groups    = [data.aws_security_group.revive_sg.id]
   subnet_mapping {
-    subnet_id     = data.aws_subnet.sub_pub
-    allocation_id = data.aws_eip.eip_allocation_id
+    subnet_id     = data.aws_subnet.sub_pub.id
+    allocation_id = data.aws_eip.eip_allocation_id.id
   }
 
   enable_deletion_protection = var.lb_protection
