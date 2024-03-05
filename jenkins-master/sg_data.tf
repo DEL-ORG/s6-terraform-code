@@ -12,6 +12,3 @@ data "aws_security_group" "revive_sg" {
   }
 }
 
-//data "aws_security_group" "selected" {
-//  id = var.security_group_id
-//}
