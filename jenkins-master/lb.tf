@@ -2,10 +2,10 @@ resource "aws_lb" "jenkins_lb" {
   name               = "revive-jenkins-lb"
   internal           = var.internal
   load_balancer_type = var.lb_type
-  security_groups    = [var.sg]
+  security_groups    = [data.aws_security_group.revive_sg.id]
   subnet_mapping {
-    subnet_id     = var.subnet_id[0]
-    allocation_id = var.allocation_id
+    subnet_id     = data.aws_subnets.subnets_pub.ids[1]
+    allocation_id = data.aws_eip.jenkins_eip.id
   }
 
   enable_deletion_protection = var.lb_protection
