@@ -5,7 +5,7 @@ resource "aws_lb" "jenkins_lb" {
   security_groups    = [var.sg]
   subnet_mapping {
     subnet_id     = var.subnet_id[0]
-    allocation_id = var.allocation_id 
+    allocation_id = var.allocation_id
   }
 
   enable_deletion_protection = var.lb_protection
@@ -13,7 +13,7 @@ resource "aws_lb" "jenkins_lb" {
   tags = merge(var.tags, {
     Name = format("%s-revive-jenkins-lb", var.tags["id"])
   })
-  
+
 }
 
 resource "aws_lb_listener" "jenkins_lb_listener" {

@@ -1,9 +1,9 @@
 resource "aws_launch_template" "jenkins_launch_template" {
-  name          = format("%s-%s-jenkins-launch-template", var.tags["project"], var.tags["environment"])
-  image_id      = var.instance_ami
-  instance_type = var.instance_type
-  key_name      = data.aws_key_pair.jen_key.key_name
-  vpc_security_group_ids = [var.sg] 
+  name                   = format("%s-%s-jenkins-launch-template", var.tags["project"], var.tags["environment"])
+  image_id               = var.instance_ami
+  instance_type          = var.instance_type
+  key_name               = data.aws_key_pair.jen_key.key_name
+  vpc_security_group_ids = [var.sg]
   block_device_mappings {
     device_name = "/dev/sda1"
     ebs {
@@ -24,7 +24,7 @@ resource "aws_launch_template" "jenkins_launch_template" {
     Name = format("%s-jenkins-launch-template", var.tags["project"])
     },
   )
-  depends_on =[
+  depends_on = [
     aws_iam_role.jenkins_revive_role
   ]
 }

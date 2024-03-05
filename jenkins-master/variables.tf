@@ -67,7 +67,7 @@ variable "desired_capacity" {
 variable "sg" {
   type = string
 }
- variable "allocation_id " {
+variable "allocation_id" {
   type = string
 }
 variable "subnet_id" {

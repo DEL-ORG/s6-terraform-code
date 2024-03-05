@@ -1,12 +1,7 @@
 //data "aws_ami" "jenkins_ami" {
-//  executable_users = ["self"]
-//  most_recent      = true
-//  name_regex       = "^myami-\\d{3}"
-//  owners           = ["self"]
-//
 //  filter {
 //    name   = "name"
-//    values = ["myami-*"]
+//    values = ["jenkins*"]
 //  }
 //
 //  filter {
