@@ -1,12 +1,12 @@
 region = "us-east-1"
 
 subnet_id = [
-  "subnet-01a9ada62c5bffde4",
-  "subnet-08322d895f564c32f",
-  "subnet-03cb8d57f2c475664"
+  "subnet-0db59b4a77b492ae0",
+  "subnet-0a024ee021665ae28",
+  "subnet-099bd4da01d7d022c"
 ]
 
-instance_ami    = "ami-06c3cc1dd06653a0d"
+instance_ami    = "ami-022389d5ae885e6b9"
 instance_type   = "t2.medium"
 volume_size     = "30"
 pub_ip          = true
@@ -23,8 +23,8 @@ tags = {
   "resource"      = "jenkins-master"
 }
 
-sg            = "sg-0be1bb8572716eea9"
-allocation_id = "eipalloc-0c04380feaaa0e574"
+sg            = "sg-07a27199c2272a5c4"
+allocation_id = "eipalloc-0c7a5e1315f5d8fc1"
 
 internal = false
 
