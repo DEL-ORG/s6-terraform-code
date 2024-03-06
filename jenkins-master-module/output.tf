@@ -3,5 +3,5 @@ output "jenkins_endpoint" {
 }
 
 //output "pass" {
-//  value = terraform_data.jenkins_pass.output
+//  value = null_resource.jenkins_pass.id
 //}
