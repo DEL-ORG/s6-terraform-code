@@ -3,7 +3,7 @@ resource "aws_autoscaling_group" "jenkins_autoscale" {
   desired_capacity    = var.desired_capacity
   max_size            = var.max_size
   min_size            = var.min_size
-  vpc_zone_identifier = [data.aws_subnet.sub_pub.id]
+  vpc_zone_identifier = [data.aws_subnet.sub_pri.id]
   target_group_arns   = [aws_lb_target_group.jenkins_lb_tg.arn]
 
   launch_template {

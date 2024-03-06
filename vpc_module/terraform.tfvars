@@ -12,6 +12,7 @@ tags = {
   "cloud_provider" = "aws"
 }
 
+num_eip = 1
 num_nat = 1
 
 availability_zone = [

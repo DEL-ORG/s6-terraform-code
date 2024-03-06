@@ -3,9 +3,11 @@ variable "aws_region" {
   description = "your desire aws region"
   default     = "us-east-1"
 }
-
-
 variable "num_nat" {
+  type    = number
+  default = 1
+}
+variable "num_eip" {
   type    = number
   default = 1
 }

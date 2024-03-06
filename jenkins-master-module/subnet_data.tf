@@ -4,3 +4,10 @@ data "aws_subnet" "sub_pub" {
     values = ["revive-1300-pub_subnet-1"]
   }
 }
+
+data "aws_subnet" "sub_pri" {
+  filter {
+    name   = "tag:Name"
+    values = ["revive-1300-pri_subnet-1"]
+  }
+}
