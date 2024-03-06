@@ -1,9 +1,9 @@
 resource "aws_launch_template" "jenkins_launch_template" {
   name                   = format("%s-%s-jenkins-launch-template", var.tags["project"], var.tags["environment"])
-  image_id               = var.instance_ami
+  image_id               = data.aws_ami.jenkins_ami.id
   instance_type          = var.instance_type
   key_name               = data.aws_key_pair.jen_key.key_name
-  vpc_security_group_ids = [var.sg]
+  vpc_security_group_ids = [data.aws_security_group.revive_sg.id]
   block_device_mappings {
     device_name = "/dev/sda1"
     ebs {
