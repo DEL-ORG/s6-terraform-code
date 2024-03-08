@@ -3,11 +3,8 @@ resource "aws_lb" "jenkins_lb" {
   internal           = var.internal
   load_balancer_type = var.lb_type
   security_groups    = [data.aws_security_group.revive_sg.id]
-  subnet_mapping {
-    subnet_id     = data.aws_subnet.sub_pub.id
-    allocation_id = data.aws_eip.eip_allocation_id.id
-  }
-
+  subnets     = [data.aws_subnet.sub_pub.id]
+  
   enable_deletion_protection = var.lb_protection
 
   tags = merge(var.tags, {

@@ -19,9 +19,10 @@ resource "aws_security_group_rule" "bastion_inbound" {
 }
 
 resource "aws_security_group_rule" "lb_inbound" {
+  for_each          = { for pt, port in var.ports : pt => port }
   type              = "ingress"
-  from_port         = var.ports[1,3]
-  to_port           = var.ports[1,3]
+  from_port         = each.value
+  to_port           = each.value
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.lb_sg.id
@@ -33,5 +34,5 @@ resource "aws_security_group_rule" "web_ping" {
   to_port           = 0
   protocol          = "icmp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.revive_sg.id
+  security_group_id = aws_security_group.jenkins_sg.id
 }

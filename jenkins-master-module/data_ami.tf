@@ -1,5 +1,5 @@
 data "aws_ami" "jenkins_ami" {
-  most_recent      = true
+  most_recent = true
   filter {
     name   = "tag:Name"
     values = ["jenkins-master-ami-*"]

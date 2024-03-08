@@ -1,4 +1,4 @@
-region = "us-east-1"
+region          = "us-east-1"
 instance_type   = "t2.medium"
 volume_size     = "30"
 pub_ip          = true

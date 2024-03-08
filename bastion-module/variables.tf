@@ -32,10 +32,6 @@ variable "pub_ip" {
   type = bool
 }
 
-variable "cycle" {
-  type = bool
-}
-
 variable "tenancy" {
   type = string
 }

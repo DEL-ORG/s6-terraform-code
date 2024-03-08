@@ -14,7 +14,7 @@ resource "aws_instance" "revive_bastion" {
   }
 
   lifecycle {
-    prevent_destroy = var.cycle
+    prevent_destroy = false
   }
 
   tags = merge(var.tags, {

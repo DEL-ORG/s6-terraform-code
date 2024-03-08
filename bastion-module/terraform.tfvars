@@ -1,11 +1,10 @@
-region = "us-east-1"
+region          = "us-east-1"
 instance_type   = "t2.medium"
 volume_size     = "30"
 pub_ip          = true
 api_termination = true
-cycle = false
-tenancy = "default"
-key = ""
+tenancy         = "default"
+key             = "bastion-key"
 
 
 tags = {
