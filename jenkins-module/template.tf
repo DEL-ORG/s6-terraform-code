@@ -20,9 +20,6 @@ resource "aws_launch_template" "jenkins_launch_template" {
       Name = format("%s-revive-jenkins", var.tags["id"])
     })
   }
-  provisioner "local-exec" {
-            command = "sudo cat /var/lib/jenkins/secrets/initialAdminPassword  >> pass.txt"
-            }
 
   tags = merge(var.tags, {
     Name = format("%s-jenkins-launch-template", var.tags["project"])

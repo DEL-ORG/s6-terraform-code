@@ -17,11 +17,6 @@ resource "aws_instance" "revive_bastion" {
     prevent_destroy = false
   }
 
-  provisioner "file" {
-    source      = "test/jenkins-key.pem"
-    destination = "$HOME/jenkins-key.pem"
-  }
-
   tags = merge(var.tags, {
     Name = format("bastion-%s-revive", var.tags["id"])
   })

@@ -19,8 +19,7 @@ resource "aws_lb_listener" "jenkins_lb_listener_http" {
   protocol          = "HTTP"
 
   default_action {
-    type             = "redirect"
-    //target_group_arn = aws_lb_target_group.jenkins_lb_tg.id
+    type = "redirect"
 
     redirect {
       port        = "443"
@@ -36,9 +35,7 @@ resource "aws_lb_listener" "jenkins_lb_listener_https" {
   port              = "443"
   protocol          = "HTTPS"
   certificate_arn   = aws_acm_certificate.cert_revive.arn
-  ssl_policy       = "ELBSecurityPolicy-2016-08"
-
-
+  
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.jenkins_lb_tg.id

@@ -17,12 +17,15 @@ tags = {
 
 internal = false
 
-lb_type = "network"
+lb_type = "application"
 
 lb_protection = false
 
 desired_capacity = 1
 max_size         = 2
 min_size         = 1
+zone_sub         = "jenkins"
+record_type      = "CNAME"
+domain_name      = "reviceapp.com"
 
 
