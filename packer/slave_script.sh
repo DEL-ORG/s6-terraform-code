@@ -184,10 +184,9 @@ function user_setup {
 cat << EOF > /usr/users.txt
 jenkins
 ansible 
-Automation
+automation
 EOF
-
-    username=$(cat /tmp/users.txt | tr '[A-Z]' '[a-z]')
+    username=$(cat /usr/users.txt | tr '[A-Z]' '[a-z]')
     GROUP_NAME="tools"
 
     # cat /etc/group |grep -w tools &>/dev/nul || sudo groupadd $GROUP_NAME

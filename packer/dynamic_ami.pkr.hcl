@@ -23,7 +23,7 @@ variable "tags" {
 
 source "amazon-ebs" "jenkins-slave" {
   ami_name      = "jenkins-slave-ami-{{timestamp}}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   region        = "us-east-1"
   source_ami_filter {
     filters = {
@@ -34,6 +34,10 @@ source "amazon-ebs" "jenkins-slave" {
     most_recent = true
     owners      = ["099720109477"]
   }
+  ami_block_device_mappings {
+    device_name = "/dev/sda1"
+    volume_size = 30
+  }
   tags = var.tags
   ssh_username = "ubuntu"
 }
@@ -43,14 +47,13 @@ build {
     "source.amazon-ebs.jenkins-slave"
   ]
   provisioner "file" {
-    source      = "users.txt"
-    destination = "/tmp/users.txt"
+    source      = "slave_script.sh"
+    destination = "/tmp/slave_script.sh"
   }
   provisioner "shell" {
-    execute_command = "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}"
-    script          = "slave_script.sh"
+    inline = [
+      "cd /tmp && bash slave_script.sh"
+    ]
     pause_before    = "10s"
-
   }
-
 }
