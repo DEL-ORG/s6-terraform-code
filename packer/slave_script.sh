@@ -177,16 +177,11 @@ function apt_software {
 
     ## chmod the Docker socket. the Docker daemon does not have the necessary permissions to access the Docker socket file located at /var/run/docker.sock
     sudo chown root:docker /var/run/docker.sock
-    sudo chmod 666 /var/run/docker.sock
+    sudo chmod -R 666 /var/run/docker.sock
 }
 
 function user_setup {
-cat << EOF > /usr/users.txt
-jenkins
-ansible 
-automation
-EOF
-    username=$(cat /usr/users.txt | tr '[A-Z]' '[a-z]')
+    username=$(cat /tmp/users.txt | tr '[A-Z]' '[a-z]')
     GROUP_NAME="tools"
 
     # cat /etc/group |grep -w tools &>/dev/nul || sudo groupadd $GROUP_NAME
@@ -214,7 +209,6 @@ EOF
             echo "$i ALL=(ALL) NOPASSWD: /usr/bin/docker" | sudo tee -a /etc/sudoers
         fi
     done
-
     for users in $username
     do
         ls /home |grep -w $users &>/dev/nul || mkdir -p /home/$users
@@ -222,6 +216,7 @@ EOF
         sudo chown -R $users:$users /home/$users
         sudo usermod -s /bin/bash -aG tools $users
         sudo usermod -s /bin/bash -aG docker $users
+        sudo usermod -aG docker root
         echo -e "$users\n$users" |passwd "$users"
     done
 

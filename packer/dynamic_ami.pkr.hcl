@@ -47,13 +47,13 @@ build {
     "source.amazon-ebs.jenkins-slave"
   ]
   provisioner "file" {
-    source      = "slave_script.sh"
-    destination = "/tmp/slave_script.sh"
+    source      = "users.txt"
+    destination = "/tmp/users.txt"
   }
   provisioner "shell" {
-    inline = [
-      "cd /tmp && bash slave_script.sh"
-    ]
+    execute_command = "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}"
+    script          = "slave_script.sh"
     pause_before    = "10s"
+
   }
 }
