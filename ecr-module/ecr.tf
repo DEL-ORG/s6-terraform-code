@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "s6_ecr" {
+resource "aws_ecr_repository" "s6_revive_ecr" {
   for_each             = toset(var.ecr_repo_name)
   name                 = each.key
   image_tag_mutability = var.mutability

@@ -60,3 +60,15 @@ variable "desired_capacity" {
   default = 1
 }
 
+variable "zone_sub" {
+  type = string
+}
+
+variable "record_type" {
+  type = string
+}
+
+variable "domain_name" {
+  type = string
+}
+

@@ -1,8 +1,10 @@
-region = "us-east-1"
+region          = "us-east-1"
 instance_type   = "t2.medium"
 volume_size     = "30"
 pub_ip          = true
 api_termination = true
+tenancy         = "default"
+key             = "bastion-key"
 
 
 tags = {
@@ -15,14 +17,6 @@ tags = {
   "resource"      = "jenkins-master"
 }
 
-internal = false
 
-lb_type = "network"
-
-lb_protection = false
-
-desired_capacity = 1
-max_size         = 2
-min_size         = 1
 
 

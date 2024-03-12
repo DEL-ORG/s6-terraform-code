@@ -20,6 +20,7 @@ resource "aws_launch_template" "jenkins_launch_template" {
       Name = format("%s-revive-jenkins", var.tags["id"])
     })
   }
+
   tags = merge(var.tags, {
     Name = format("%s-jenkins-launch-template", var.tags["project"])
     },

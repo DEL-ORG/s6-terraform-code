@@ -16,13 +16,29 @@ variable "tags" {
   }
 }
 
-variable "ports" {
-  type = list(number)
-  default = [
-    22,
-    80,
-    8080,
-    443
-  ]
+variable "instance_type" {
+  type = string
 }
-     
+
+variable "volume_size" {
+  type = string
+}
+
+variable "api_termination" {
+  type = bool
+}
+
+variable "pub_ip" {
+  type = bool
+}
+
+variable "tenancy" {
+  type = string
+}
+
+variable "key" {
+  type = string
+}
+
+
+
