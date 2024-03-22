@@ -1,16 +1,14 @@
 resource "aws_acm_certificate" "revive" {
   # provider = aws.acm
-  domain_name       = "camerspeed.com"
-  # domain_name       = "reviceapp.com"
-  subject_alternative_names = ["*.camerspeed.com"]
-  # subject_alternative_names = ["*.reviceapp.com"]
+  domain_name       = "reviceapp.com"
+  subject_alternative_names = ["*.reviceapp.com"]
   validation_method = "DNS"
 
   tags = {
   "id"               = "2024"
     "owner"          = "Devops Easy Learning"
     "teams"          = "Phase-10-1"
-    # "environment"    = "Prod"
+    # "environment"    = "dev"
     "project"        = "revive"
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"
@@ -23,12 +21,11 @@ resource "aws_acm_certificate" "revive" {
 }
 
 # data source to retrieve the name of the hosted zone to contain the record
-data "aws_route53_zone" "hostedzone" {
 
-  # name         = "reviceapp.com"
-  name         = "camerspeed.com"
-  private_zone = false
-}
+data "aws_route53_zone" "hostedzone" {
+    name   = "reviceapp.com"
+    private_zone = false
+  }
 
 # creation of DNS Record for certificate validation
 resource "aws_route53_record" "cert_validation" {
@@ -49,7 +46,7 @@ resource "aws_acm_certificate_validation" "revive" {
 # Creation of DNS Alias Record for our subdomain name pointint to our ELB endpoint
 # resource "aws_route53_record" "revive" {
 #   zone_id = data.aws_route53_zone.hostedzone.zone_id
-#   name    = "del.camerspeed.com"
+#   name    = "www.reviceapp.com"
 #   type    = "A"
 
 #   alias {

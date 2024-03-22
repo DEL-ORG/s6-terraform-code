@@ -1,5 +1,16 @@
-variable "name_spaces" {
+variable "aws_region" {
+  type = string
+  default = "us-east-1"
+}
+
+variable "aws-secret-string" {
   type = list(string)
+  default = [
+    "mysql-orders-password",
+    "mysql-catalog-password",
+    "redis-db-password",
+    "DynamoDB-password"
+  ]
 }
 
 variable "tags" {
@@ -13,14 +24,4 @@ variable "tags" {
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"
   }
-}
-
-variable "region" {
-  type    = string
-  default = "us-east-1"
-}
-
-variable "control_plane_name" {
-  type    = string
-  default = "dev-revive"
 }

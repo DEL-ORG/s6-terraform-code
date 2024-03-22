@@ -1,10 +1,10 @@
 resource "aws_instance" "bastion-host" {
   count                   = var.instance_count
-  ami                     = var.ec2_instance_ami
+  ami                     = data.aws_ami.k8s-bastion_ami.id
   instance_type           = var.ec2_instance_type
   key_name                = aws_key_pair.revive_bastion.key_name
   vpc_security_group_ids  = [aws_security_group.sg.id]
-  subnet_id               = var.subnet_id
+  subnet_id               = data.aws_subnet.sub_pub1.id
   disable_api_termination = var.enable_termination_protection
 
   root_block_device {
@@ -12,7 +12,7 @@ resource "aws_instance" "bastion-host" {
   }
 
   tags = merge(var.tags, {
-    Name = format("%s-%s-%s-${var.instance_name}-${count.index + 1}", var.tags["id"], var.tags["environment"], var.tags["project"])
+    Name = format("%s-%s-${var.instance_name}-${count.index + 1}", var.tags["environment"], var.tags["project"])
     },
   )
 }

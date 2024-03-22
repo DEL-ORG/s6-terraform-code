@@ -9,42 +9,29 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.0"
     }
+
+    local = {
+      source = "hashicorp/local"
+      version = "2.5.1"
+    }
   }
 }
 
-# terraform {
-#   backend "s3" {
-#     bucket         = ""
-#     dynamodb_table = ""
-#     key            = ""
-#     region         = ""
-#   }
-# }
+terraform {
+  backend "s3" {
+    bucket         = "s6-revive-terraform"
+    dynamodb_table = "revive-k8s-tfstate-locking"
+    key            = "k8s/dev/terraform.tf"
+    region         = "us-east-1"
+  }
+}
 
 locals {
   region                  = "us-east-1"
-  cluster_name            = "2024-dev-revive"
+  cluster_name            = "dev-revive"
   eks_version             = 1.24
   endpoint_private_access = false
   endpoint_public_access  = true
-
-
-  public_subnets = {
-    us-east-1a = "subnet-0544d1a871497bf29"
-    us-east-1b = "subnet-0591e3a84c68fd56a"
-    us-east-1c = "subnet-073b88dc26dd53e17"
-  }
-
-
-  tags = {
-    "id"             = "2024"
-    "owner"          = "Devops Easy Learning"
-    "teams"          = "Phase-10-1"
-    "environment"    = "dev"
-    "project"        = "revive"
-    "create_by"      = "EK-TECH Solutions"
-    "cloud_provider" = "aws"
-  }
 }
 
 module "eks-control-plane" {
@@ -54,8 +41,4 @@ module "eks-control-plane" {
   eks_version             = local.eks_version
   endpoint_private_access = local.endpoint_private_access
   endpoint_public_access  = local.endpoint_public_access
-  # public_subnets          = local.subnet_ids
-  public_subnets          = values(local.public_subnets)
-  # subnet_ids              = local.subnet_ids
-  tags                    = local.tags
 }

@@ -1,5 +1,5 @@
 resource "aws_iam_role" "external-dns" {
-  name = format("%s-%s-%s-external-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name = format("%s-%s-external-iam-role", var.tags["environment"], var.tags["project"])
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -20,12 +20,12 @@ resource "aws_iam_role" "external-dns" {
   })
 
   tags = {
-    tag-key = format("%s-%s-%s-external-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+    tag-key = format("%s-%s-external-iam-role", var.tags["environment"], var.tags["project"])
   }
 }
 
 resource "aws_iam_policy" "external-dns-polcy" {
-  name        = format("%s-%s-%s-external-iam-policy", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name        = format("%s-%s-external-iam-policy", var.tags["environment"], var.tags["project"])
   path        = "/"
   description = "External DNS IAM Policy"
   policy = jsonencode(

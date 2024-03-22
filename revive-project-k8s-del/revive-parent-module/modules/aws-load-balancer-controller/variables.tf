@@ -4,7 +4,7 @@ variable "tags" {
     "id"             = "2024"
     "owner"          = "Devops Easy Learning"
     "teams"          = "Phase-10-1"
-    "environment"    = "Prod"
+    "environment"    = "dev"
     "project"        = "revive"
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"
@@ -28,10 +28,7 @@ variable "aws-load-balancer-controller-ns" {
 
 variable "control_plane_name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }
 
-variable "vpc_id" {
-  type    = string
-  default = "vpc-068852590ea4b093b"
-}
+

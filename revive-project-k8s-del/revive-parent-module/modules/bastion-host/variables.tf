@@ -23,19 +23,6 @@ variable "ec2_instance_type" {
   default     = "t2.micro"
 }
 
-# variable "vpc_id" {}
-
-variable "vpc_id" {
-  type        = string
-  description = "VPC ID"
-  default     = "vpc-068852590ea4b093b"
-}
-
-variable "subnet_id" {
-  type        = string
-  description = "Subnet ID for the EC2 instance"
-  default     = "subnet-096d45c28d9fb4c14"
-}
 
 variable "root_volume_size" {
   type        = number
@@ -84,7 +71,7 @@ variable "tags" {
     "id"             = "2024"
     "owner"          = "Devops Easy Learning"
     "teams"          = "Phase-10-1"
-    "environment"    = "Prod"
+    "environment"    = "dev"
     "project"        = "revive"
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"

@@ -32,7 +32,7 @@ resource "helm_release" "loadbalancer_controller" {
 
   set {
     name  = "vpcId"
-    value = var.vpc_id
+    value = data.aws_vpc.revive_vpc.id
   }
 
   set {

@@ -1,5 +1,5 @@
 resource "aws_iam_role" "aws-ebs-csi-driver" {
-  name = format("%s-%s-%s-aws-ebs-csi-driver-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name = format("%s-%s-aws-ebs-csi-driver-iam-role", var.tags["environment"], var.tags["project"])
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -20,13 +20,13 @@ resource "aws_iam_role" "aws-ebs-csi-driver" {
   })
 
   tags = {
-    tag-key = format("%s-%s-%s-aws-ebs-csi-driver-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+    tag-key = format("%s-%s-aws-ebs-csi-driver-iam-role", var.tags["environment"], var.tags["project"])
   }
 }
 
 # https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master/docs/example-iam-policy.json
 resource "aws_iam_policy" "aws-ebs-csi-driver-polcy" {
-  name        = format("%s-%s-%s-aws-ebs-csi-driver-polcy", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name        = format("%s-%s-aws-ebs-csi-driver-polcy", var.tags["environment"], var.tags["project"])
   path        = "/"
   description = "External DNS IAM Policy"
   policy = jsonencode(

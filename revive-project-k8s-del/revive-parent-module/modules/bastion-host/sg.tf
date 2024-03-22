@@ -1,8 +1,8 @@
 resource "aws_security_group" "sg" {
   description = "Allow inbound traffic"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.revive_vpc.id
   tags = merge(var.tags, {
-    Name = format("%s-%s-%s-${var.sg_name}", var.tags["id"], var.tags["environment"], var.tags["project"])
+    Name = format("%s-%s-${var.sg_name}", var.tags["environment"], var.tags["project"])
   })
 }
 

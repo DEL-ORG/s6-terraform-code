@@ -1,13 +1,13 @@
 region                  = "us-east-1"
-cluster_name            = "2024-prod-revive"
-eks_version             = 1.24
+cluster_name            = "dev-revive"
+eks_version             = 1.26
 endpoint_private_access = false
 endpoint_public_access  = true
 tags = {
   "id"             = "2024"
   "owner"          = "Devops Easy Learning"
   "teams"          = "Phase-10-1"
-  "environment"    = "Prod"
+  "environment"    = "dev"
   "project"        = "revive"
   "create_by"      = "EK-TECH Solutions"
   "cloud_provider" = "aws"

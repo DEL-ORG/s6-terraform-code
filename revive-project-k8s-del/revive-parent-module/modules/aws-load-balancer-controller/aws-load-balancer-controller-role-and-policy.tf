@@ -1,5 +1,5 @@
 resource "aws_iam_role" "aws-load-balancer-controller" {
-  name = format("%s-%s-%s-aws-load-balancer-controller-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name = format("%s-%s-aws-load-balancer-controller-iam-role", var.tags["environment"], var.tags["project"])
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -20,13 +20,13 @@ resource "aws_iam_role" "aws-load-balancer-controller" {
   })
 
   tags = {
-    tag-key = format("%s-%s-%s-aws-load-balancer-controller-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+    tag-key = format("%s-%s-aws-load-balancer-controller-iam-role", var.tags["environment"], var.tags["project"])
   }
 }
 
 # https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
 resource "aws_iam_policy" "aws-load-balancer-controller-polcy" {
-  name        = format("%s-%s-%s-aws-load-balancer-controller-iam-policy", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name        = format("%s-%s-aws-load-balancer-controller-iam-policy", var.tags["environment"], var.tags["project"])
   path        = "/"
   description = "External DNS IAM Policy"
   policy = jsonencode(

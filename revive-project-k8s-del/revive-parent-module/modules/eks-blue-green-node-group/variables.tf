@@ -10,7 +10,7 @@ variable "tags" {
     "id"             = "2024"
     "owner"          = "Devops Easy Learning"
     "teams"          = "Phase-10-1"
-    "environment"    = "Prod"
+    "environment"    = "dev"
     "project"        = "revive"
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"
@@ -19,7 +19,7 @@ variable "tags" {
 
 variable "eks_version" {
   type    = string
-  default = "1.24"
+  default = "1.26"
 }
 
 variable "node_min" {
@@ -29,7 +29,7 @@ variable "node_min" {
 
 variable "desired_node" {
   type    = string
-  default = "1"
+  default = "4"
 }
 
 variable "node_max" {
@@ -60,7 +60,7 @@ variable "green" {
 variable "ec2_ssh_key" {
   type        = string
   description = "SSH key to connect to the node from bastion host"
-  default     = "revive_bastion_keypair"
+  default     = "node_group_key"
 }
 
 variable "deployment_nodegroup" {
@@ -83,7 +83,7 @@ variable "ami_type" {
 variable "instance_types" {
   type        = string
   description = "t3.medium should be used at least"
-  default     = "t2.micro"
+  default     = "t3.medium"
 }
 
 variable "disk_size" {
@@ -106,20 +106,14 @@ variable "enable_cluster_autoscaler" {
 
 variable "control_plane_name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }
 
 variable "cluster_name" {
   type    = string
-  default = ""
-  # default = "2024-prod-revive"
+  default = "dev-revive"
 }
 
-variable "private_subnets" {
-  # type = map(string)
-  default = {
-    us-east-1a = "subnet-096d45c28d9fb4c14"
-    us-east-1b = "subnet-05f285a35173783b0"
-    us-east-1c = "subnet-0fe3255479ad7c3a4"
-  }
-}
+# variable "private_subnets" {
+#   type = map(string)
+# }

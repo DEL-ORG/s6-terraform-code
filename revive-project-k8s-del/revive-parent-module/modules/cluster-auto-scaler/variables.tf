@@ -9,7 +9,7 @@ variable "tags" {
     "id"             = "2024"
     "owner"          = "Devops Easy Learning"
     "teams"          = "Phase-10-1"
-    "environment"    = "Prod"
+    "environment"    = "dev"
     "project"        = "revive"
     "create_by"      = "EK-TECH Solutions"
     "cloud_provider" = "aws"
@@ -28,5 +28,5 @@ variable "cluster-autoscaler-ns" {
 
 variable "control_plane_name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }

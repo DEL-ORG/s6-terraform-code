@@ -5,5 +5,5 @@ variable "aws_region" {
 
 variable "control_plane_name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }

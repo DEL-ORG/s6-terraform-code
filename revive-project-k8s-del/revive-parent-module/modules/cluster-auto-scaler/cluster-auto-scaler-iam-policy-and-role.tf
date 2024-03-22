@@ -1,5 +1,5 @@
 resource "aws_iam_role" "cluster-autoscaler" {
-  name = format("%s-%s-%s-cluster-autoscaler-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name = format("%s-%s-cluster-autoscaler-iam-role", var.tags["environment"], var.tags["project"])
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -20,13 +20,13 @@ resource "aws_iam_role" "cluster-autoscaler" {
   })
 
   tags = {
-    tag-key = format("%s-%s-%s-cluster-autoscaler-iam-role", var.tags["id"], var.tags["environment"], var.tags["project"])
+    tag-key = format("%s-%s-cluster-autoscaler-iam-role", var.tags["environment"], var.tags["project"])
   }
 }
 
 # https://raw.githubusercontent.com/kubernetes-sigs/cluster-autoscaler/main/docs/install/iam_policy.json
 resource "aws_iam_policy" "cluster-autoscaler-polcy" {
-  name        = format("%s-%s-%s-cluster-autoscaler-polcy", var.tags["id"], var.tags["environment"], var.tags["project"])
+  name        = format("%s-%s-cluster-autoscaler-polcy", var.tags["environment"], var.tags["project"])
   path        = "/"
   description = "External DNS IAM Policy"
   policy = jsonencode(

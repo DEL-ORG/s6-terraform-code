@@ -1,4 +1,4 @@
-# control_plane_name = "2024-prod-revive"
+control_plane_name = "dev-revive"
 region         = "us-east-1"
 name_spaces = [
   "aws-ebs-csi-driver",
@@ -8,10 +8,12 @@ name_spaces = [
   "metrics-server",
   "app",
   "datadog",
+  "prometheus",
   "monitoring",
   "argocd",
   "security",
   "jenkins",
+  "calico",
 ]
 
 tags = {

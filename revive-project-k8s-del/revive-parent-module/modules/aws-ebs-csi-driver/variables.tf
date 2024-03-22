@@ -28,11 +28,11 @@ variable "aws-ebs-csi-driver-ns" {
 
 variable "control_plane_name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }
 
 variable "storage-class-name" {
   type    = string
-  default = "2024-prod-revive"
+  default = "dev-revive"
 }
 
