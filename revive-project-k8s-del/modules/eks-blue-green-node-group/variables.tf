@@ -19,7 +19,7 @@ variable "tags" {
 
 variable "eks_version" {
   type    = string
-  default = "1.26"
+  default = "1.28"
 }
 
 variable "node_min" {
@@ -29,7 +29,7 @@ variable "node_min" {
 
 variable "desired_node" {
   type    = string
-  default = "4"
+  default = "3"
 }
 
 variable "node_max" {

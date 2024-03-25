@@ -7,9 +7,9 @@ control_plane_name = ""
 #   us-east-1c = "subnet-0fe3255479ad7c3a4"
 # }
 
-eks_version  = "1.26"
+eks_version  = "1.28"
 node_min     = "1"
-desired_node = "4"
+desired_node = "3"
 node_max     = "6"
 
 blue_node_color  = "blue"

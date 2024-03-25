@@ -24,6 +24,13 @@ terraform {
   }
 }
 
+
+data "aws_lb" "revive" {
+  name = "revive-alb"
+}
+
+# data "aws_lb_hosted_zone_id" "main"
+
 data "aws_route53_zone" "hostedzone" {
     name   = "reviceapp.com"
     private_zone = false
@@ -35,10 +42,9 @@ resource "aws_route53_record" "revive" {
   type    = "A"
 
   alias {
-    # name                   = revive-alb
-    # zone_id                = aws_lb.terra.zone_id
-    name                   = aws_lb.revive-alb.dns_name
-    zone_id                = aws_lb.revive-alb.zone_id
+    
+    name                   = aws_lb.revive.dns_name
+    zone_id                = data.aws_lb.revive.zone_id
     evaluate_target_health = true
   }
 }
