@@ -29,12 +29,12 @@ variable "node_min" {
 
 variable "desired_node" {
   type    = string
-  default = "3"
+  default = "1"
 }
 
 variable "node_max" {
   type    = string
-  default = "6"
+  default = "8"
 }
 
 variable "blue_node_color" {

@@ -25,6 +25,12 @@ sleep 2
 cd ../eks-namespaces
 terraform init
 terraform apply --auto-approve
+########  provision cluster-auto-scaler module ######
+echo "provisioning cluster-auto-scaler....."
+sleep 2
+cd ../cluster-auto-scaler
+terraform init
+terraform apply --auto-approve
 ########  provision bastion-host module ######
 echo "provisioning bastion-host....."
 sleep 2
@@ -43,12 +49,6 @@ sleep 2
 cd ../aws-load-balancer-controller
 terraform init
 terraform apply --auto-approve
-########  provision cluster-auto-scaler module ######
-echo "provisioning cluster-auto-scaler....."
-sleep 2
-cd ../cluster-auto-scaler
-terraform init
-terraform apply --auto-approve
 ########  provision external-dns module ######
 echo "provisioning external-dns....."
 sleep 2
@@ -62,9 +62,9 @@ cd ../aws-secret-manager
 terraform init
 terraform apply --auto-approve
 ########  provision ssl-certificate module ######
-echo "provisioning ssl-certificate....."
-sleep 2
-cd ../ssl-certificate
-terraform init
-terraform apply --auto-approve
+# echo "provisioning ssl-certificate....."
+# sleep 2
+# cd ../ssl-certificate
+# terraform init
+# terraform apply --auto-approve
 

@@ -40,12 +40,12 @@ resource "helm_release" "cluster_autoscaler_release" {
     value = aws_iam_role.cluster-autoscaler.arn
   }
   set {
-    name  = "extraArgs.scale-down-delay-after-add"
-    value = "2m"
+    name  = "extraArgs.scale-down-delay-after-add" # time to wait before scaling down after adding a new node
+    value = "1m"
   }
   set {
-    name  = "extraArgs.scale-down-unneeded-time"
-    value = "2m"
+    name  = "extraArgs.scale-down-unneeded-time"  # min time node is underutilized before scaling down
+    value = "1m"
   }
   set {
     name  = "fullnameOverride"

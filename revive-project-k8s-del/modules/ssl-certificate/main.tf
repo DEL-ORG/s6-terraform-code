@@ -3,18 +3,9 @@ resource "aws_acm_certificate" "revive" {
   domain_name       = "reviceapp.com"
   subject_alternative_names = ["*.reviceapp.com"]
   validation_method = "DNS"
-
   tags = {
-  "id"               = "2024"
-    "owner"          = "Devops Easy Learning"
-    "teams"          = "Phase-10-1"
-    # "environment"    = "dev"
-    "project"        = "revive"
-    "create_by"      = "EK-TECH Solutions"
-    "cloud_provider" = "aws"
-    "terraform"      = "true"
-}
-
+    Name = "revive"
+  }
   lifecycle {
     create_before_destroy = true
   }
@@ -41,6 +32,14 @@ resource "aws_acm_certificate_validation" "revive" {
   # provider = aws.acm
   certificate_arn         = "${aws_acm_certificate.revive.arn}"
   validation_record_fqdns = ["${aws_route53_record.cert_validation.fqdn}"]
+}
+
+# Store Certificate ARN in Parameter Store
+resource "aws_ssm_parameter" "certificate_arn" {
+  name  = "/revive/certificate_arn"
+  type  = "String"
+  value = aws_acm_certificate.revive.arn
+  depends_on = [aws_acm_certificate.revive]
 }
 
 # Creation of DNS Alias Record for our subdomain name pointint to our ELB endpoint

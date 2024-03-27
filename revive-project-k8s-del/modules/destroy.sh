@@ -2,12 +2,12 @@
 ###### This script allow us to destroy all infrastructure provisioned  #######
 
 ########  destroy ssl-certificate module ######
-echo "destroying ssl-certificate....."
-sleep 2
-cd ./ssl-certificate
-terraform init
-terraform destroy --auto-approve
-rm -rf .terraform*
+# echo "destroying ssl-certificate....."
+# sleep 2
+# cd ./ssl-certificate
+# terraform init
+# terraform destroy --auto-approve
+# rm -rf .terraform*
 ########  destroy aws-secret-manager module ######
 echo "destroying aws-secret-manager....."
 sleep 2
@@ -19,13 +19,6 @@ rm -rf .terraform*
 echo "destroying external-dns....."
 sleep 2
 cd ../external-dns
-terraform init
-terraform destroy --auto-approve
-rm -rf .terraform*
-########  destroy cluster-auto-scaler module ######
-echo "destroying cluster-auto-scaler....."
-sleep 2
-cd ../cluster-auto-scaler
 terraform init
 terraform destroy --auto-approve
 rm -rf .terraform*
@@ -47,6 +40,13 @@ rm -rf .terraform*
 echo "destroying bastion-host....."
 sleep 2
 cd ../bastion-host
+terraform init
+terraform destroy --auto-approve
+rm -rf .terraform*
+########  destroy cluster-auto-scaler module ######
+echo "destroying cluster-auto-scaler....."
+sleep 2
+cd ../cluster-auto-scaler
 terraform init
 terraform destroy --auto-approve
 rm -rf .terraform*

@@ -19,7 +19,7 @@ terraform {
   backend "s3" {
     bucket         = "s6-revive-terraform"
     dynamodb_table = "revive-k8s-tfstate-locking"
-    key            = "k8s/dev/controlplane/terraform.tf"
+    key            = "k8s/dev/alb-record/terraform.tf"
     region         = "us-east-1"
   }
 }
@@ -43,7 +43,7 @@ resource "aws_route53_record" "revive" {
 
   alias {
     
-    name                   = aws_lb.revive.dns_name
+    name                   = data.aws_lb.revive.dns_name
     zone_id                = data.aws_lb.revive.zone_id
     evaluate_target_health = true
   }

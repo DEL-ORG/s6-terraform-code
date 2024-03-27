@@ -9,8 +9,8 @@ control_plane_name = ""
 
 eks_version  = "1.28"
 node_min     = "1"
-desired_node = "3"
-node_max     = "6"
+desired_node = "1"
+node_max     = "8"
 
 blue_node_color  = "blue"
 green_node_color = "green"

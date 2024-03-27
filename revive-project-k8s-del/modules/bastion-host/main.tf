@@ -6,6 +6,7 @@ resource "aws_instance" "bastion-host" {
   vpc_security_group_ids  = [aws_security_group.sg.id]
   subnet_id               = data.aws_subnet.sub_pub1.id
   disable_api_termination = var.enable_termination_protection
+  associate_public_ip_address = true
 
   root_block_device {
     volume_size = var.root_volume_size
