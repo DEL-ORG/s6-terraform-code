@@ -31,12 +31,6 @@ sleep 2
 cd ../cluster-auto-scaler
 terraform init
 terraform apply --auto-approve
-########  provision bastion-host module ######
-echo "provisioning bastion-host....."
-sleep 2
-cd ../bastion-host
-terraform init
-terraform apply --auto-approve
 ########  provision aws-ebs-csi-driver module ######
 echo "provisioning aws-ebs-csi-driver....."
 sleep 2
@@ -55,16 +49,5 @@ sleep 2
 cd ../external-dns
 terraform init
 terraform apply --auto-approve
-########  provision aws-secret-manager module ######
-echo "provisioning aws-secret-manager....."
-sleep 2
-cd ../aws-secret-manager
-terraform init
-terraform apply --auto-approve
-########  provision ssl-certificate module ######
-# echo "provisioning ssl-certificate....."
-# sleep 2
-# cd ../ssl-certificate
-# terraform init
-# terraform apply --auto-approve
+
 
