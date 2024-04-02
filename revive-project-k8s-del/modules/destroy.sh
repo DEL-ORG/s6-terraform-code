@@ -1,24 +1,9 @@
 #!/bib/bash
 ###### This script allow us to destroy all infrastructure provisioned  #######
-
-########  destroy ssl-certificate module ######
-# echo "destroying ssl-certificate....."
-# sleep 2
-# cd ./ssl-certificate
-# terraform init
-# terraform destroy --auto-approve
-# rm -rf .terraform*
-########  destroy aws-secret-manager module ######
-echo "destroying aws-secret-manager....."
-sleep 2
-cd ../aws-secret-manager
-terraform init
-terraform destroy --auto-approve
-rm -rf .terraform*
 ########  destroy external-dns module ######
 echo "destroying external-dns....."
 sleep 2
-cd ../external-dns
+cd ./external-dns
 terraform init
 terraform destroy --auto-approve
 rm -rf .terraform*
@@ -33,13 +18,6 @@ rm -rf .terraform*
 echo "destroying aws-ebs-csi-driver....."
 sleep 2
 cd ../aws-ebs-csi-driver
-terraform init
-terraform destroy --auto-approve
-rm -rf .terraform*
-########  destroy bastion-host module ######
-echo "destroying bastion-host....."
-sleep 2
-cd ../bastion-host
 terraform init
 terraform destroy --auto-approve
 rm -rf .terraform*
@@ -64,7 +42,7 @@ cd ../aws-auth-config
 terraform init
 terraform destroy --auto-approve
 rm -rf .terraform*
-########  destroy eks-controlplane module ######
+########  destroy eks-blue-green-node-group module ######
 echo "destroying eks-blue-green-node-group....."
 sleep 2
 cd ../eks-blue-green-node-group
