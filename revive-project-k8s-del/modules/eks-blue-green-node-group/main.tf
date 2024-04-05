@@ -9,7 +9,7 @@ resource "aws_eks_node_group" "green-nodes" {
   subnet_ids = [
     data.aws_subnet.sub_priv1.id,
     data.aws_subnet.sub_priv2.id,
-    data.aws_subnet.sub_priv3.id,
+    data.aws_subnet.sub_priv3.id
   ]
   capacity_type = var.capacity_type
   ami_type      = var.ami_type
@@ -47,7 +47,7 @@ resource "aws_eks_node_group" "blue-nodes" {
   subnet_ids = [
     data.aws_subnet.sub_priv1.id,
     data.aws_subnet.sub_priv2.id,
-    data.aws_subnet.sub_priv3.id,
+    data.aws_subnet.sub_priv3.id
   ]
 
   version = var.eks_version
