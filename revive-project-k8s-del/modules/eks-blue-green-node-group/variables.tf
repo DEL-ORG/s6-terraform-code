@@ -63,10 +63,10 @@ variable "ec2_ssh_key" {
   default     = "node_group_key"
 }
 
-variable "deployment_nodegroup" {
-  type    = string
-  default = "blue_green"
-}
+# variable "deployment_nodegroup" {
+#   type    = string
+#   default = "blue_green"
+# }
 
 variable "capacity_type" {
   type        = string
