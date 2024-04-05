@@ -45,5 +45,9 @@ variable "vpc" {
     enable_dns_support   = true
 
   }
+}
 
+variable "cluster_name" {
+  type    = string
+  default = ""
 }

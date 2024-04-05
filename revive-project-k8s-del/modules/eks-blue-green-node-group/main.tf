@@ -1,16 +1,16 @@
 
 resource "aws_eks_node_group" "green-nodes" {
-  depends_on = [aws_key_pair.node_group_key]
+  # depends_on      = [aws_key_pair.node_group_key]
   cluster_name    = var.cluster_name
   node_group_name = format("%s-%s-green-node-group", var.tags["environment"], var.tags["project"])
   node_role_arn   = aws_iam_role.nodes.arn
 
   version = var.eks_version
   subnet_ids = [
-      data.aws_subnet.sub_priv1.id,
-      data.aws_subnet.sub_priv2.id,
-      data.aws_subnet.sub_priv3.id,
-    ]
+    data.aws_subnet.sub_priv1.id,
+    data.aws_subnet.sub_priv2.id,
+    data.aws_subnet.sub_priv3.id
+  ]
   capacity_type = var.capacity_type
   ami_type      = var.ami_type
 
@@ -26,9 +26,9 @@ resource "aws_eks_node_group" "green-nodes" {
     max_size     = var.green_node_color == "green" && var.green ? var.node_max : var.node_max
   }
 
-  labels = {
-    deployment_nodegroup = var.deployment_nodegroup
-  }
+  # labels = {
+  #   deployment_nodegroup = var.deployment_nodegroup
+  # }
 
   tags = merge(var.tags, {
     Name                                                  = format("%s-%s-green-node-group", var.tags["environment"], var.tags["project"])
@@ -39,16 +39,16 @@ resource "aws_eks_node_group" "green-nodes" {
 }
 
 resource "aws_eks_node_group" "blue-nodes" {
-  depends_on = [aws_key_pair.node_group_key]
+  # depends_on      = [aws_key_pair.node_group_key]
   cluster_name    = var.cluster_name
   node_group_name = format("%s-%s-blue-node-group", var.tags["environment"], var.tags["project"])
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = [
-      data.aws_subnet.sub_priv1.id,
-      data.aws_subnet.sub_priv2.id,
-      data.aws_subnet.sub_priv3.id,
-    ]
+    data.aws_subnet.sub_priv1.id,
+    data.aws_subnet.sub_priv2.id,
+    data.aws_subnet.sub_priv3.id
+  ]
 
   version = var.eks_version
 
@@ -68,9 +68,9 @@ resource "aws_eks_node_group" "blue-nodes" {
     max_size     = var.blue_node_color == "blue" && var.blue ? var.node_max : var.node_max
   }
 
-  labels = {
-    deployment_nodegroup = var.deployment_nodegroup
-  }
+  # labels = {
+  #   deployment_nodegroup = var.deployment_nodegroup
+  # }
 
   tags = merge(var.tags, {
     Name                                                  = format("%s-%s-green-node-group", var.tags["environment"], var.tags["project"])
